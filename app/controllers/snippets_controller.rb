@@ -5,6 +5,7 @@ class SnippetsController < ApplicationController
   # GET /snippets.json
   def index
     @snippets = Snippet.paginate(:page => params[:page], :per_page => 20)
+    @count = Snippet.all.count
   end
 
   # GET /snippets/1
