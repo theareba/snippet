@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<%= form_tag '', remote: true, class: 'form-inline' do %>
+  <div class="form-group">
+    <%= text_field_tag :search, nil, placeholder: 'Search', class: 'form-control' %>
+  </div>
+<% end %>
+
 <div class="snip-header">
   <h1>
     <%= @count %> Snippets
@@ -12,19 +18,20 @@
   }
 </style>
 
-<div class="panel panel-default">
-  <!-- List group -->
-  <ul class="list-group">
-    <% for snippet in @snippets %>
-      <%= link_to snippet.content.split[0...15].join(' '), snippet, class: 'list-group-item' %>
-    <% end %>
-  </ul>
+<div id="snippet">
+    <div class="panel panel-default">
+      <!-- List group -->
+      <ul class="list-group">
+        <% for snippet in @snippets %>
+          <%= link_to snippet.content.split[0...15].join(' '), snippet, class: 'list-group-item' %>
+        <% end %>
+      </ul>
+    </div>
+    <nav>
+      <ul class="pager">
+        <%= will_paginate @snippets %>
+      </ul>
+    </nav>
 </div>
-<nav>
-  <ul class="pager">
-    <%= will_paginate @snippets %>
-  </ul>
-</nav>
-
 
 
