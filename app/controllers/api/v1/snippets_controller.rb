@@ -4,7 +4,11 @@ module Api
       respond_to :json
 
       def index
-        respond_with Snippet.all
+        if params[:limit]
+          respond_with Snippet.order("id desc").limit(params[:limit])
+        else
+          respond_with Snippet.all
+        end
       end
 
       def show

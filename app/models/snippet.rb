@@ -1,5 +1,7 @@
 class Snippet < ActiveRecord::Base
   validates_length_of :content, maximum: 8192
+  validates_presence_of :content
+  validates_uniqueness_of :token
   scope :public_snippets, ->  {where(private: false)}
 
   after_create :generate_token, if: Proc.new { self.private? }
