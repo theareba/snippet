@@ -16,7 +16,7 @@
   <!-- List group -->
   <ul class="list-group">
     <% for snippet in @snippets %>
-      <li class="list-group-item"><%= snippet.content.split[0...15].join(' ') %></li>
+      <%= link_to snippet.content.split[0...15].join(' '), snippet, class: 'list-group-item' %>
     <% end %>
   </ul>
 </div>
