@@ -23,7 +23,11 @@
       <!-- List group -->
       <ul class="list-group">
         <% for snippet in @snippets %>
-          <%= link_to snippet.content.split[0...15].join(' '), snippet, class: 'list-group-item' %>
+          <% if snippet.token? %>
+            <li class="list-group-item"><%= snippet.content.split[0...15].join(' ') %></li>
+          <% else %>
+            <%= link_to snippet.content.split[0...15].join(' '), snippet, class: 'list-group-item' %>
+          <% end %>
         <% end %>
       </ul>
     </div>
@@ -33,5 +37,6 @@
       </ul>
     </nav>
 </div>
+<%= link_to Snippet.last.content.truncate(10), Snippet.find_by_token(Snippet.last.token) %>
 
 

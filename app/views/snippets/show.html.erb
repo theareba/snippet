@@ -13,6 +13,10 @@
     <h3 class="panel-title">Share this</h3>
   </div>
   <div class="panel-body">
-    <%= text_field_tag :url, snippet_url(@snippet), class: 'form-control' %>
+    <% if @snippet.token? %>
+      <%= text_field_tag :url, snippet_url(@snippet.token), class: 'form-control' %>
+    <% else %>
+      <%= text_field_tag :url, snippet_url(@snippet), class: 'form-control' %>
+    <% end %>
   </div>
 </div>
