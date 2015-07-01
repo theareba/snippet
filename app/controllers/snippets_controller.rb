@@ -1,5 +1,6 @@
 class SnippetsController < ApplicationController
   before_action :set_snippet, only: [:show, :edit, :update, :destroy]
+  before_filter :redirection, only: [:show]
 
   # GET /snippets
   # GET /snippets.json
@@ -66,11 +67,18 @@ class SnippetsController < ApplicationController
     @snippets = Snippet.search(params[:search])
   end
 
+  def redirection
+    set_snippet
+    if @snippet.token? && @param.present?
+      redirect_to root_path
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_snippet
-      param = Integer(params[:id]) rescue nil
-      if param.nil?
+      @param = Integer(params[:id]) rescue nil
+      if @param.nil?
         @snippet = Snippet.find_by_token(params[:id])
       else
         @snippet = Snippet.find(params[:id])
