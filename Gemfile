@@ -50,3 +50,4 @@ group :production do
 end
 gem 'faker'
 gem 'will_paginate', '~> 3.0.6'
+gem 'responders', '~> 2.0'
