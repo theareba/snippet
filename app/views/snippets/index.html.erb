@@ -1,29 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Snippets</h1>
+<div class="snip-header">
+  <h1>
+    Snippets
+    <%= link_to button_tag('Create Snippet', class: 'btn btn-primary pull-right'), new_snippet_path %>
+  </h1>
+</div>
+<style>
+  .snip-header {
+      padding-bottom: 20px;
+  }
+</style>
 
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th>Private</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @snippets.each do |snippet| %>
-      <tr>
-        <td><%= snippet.content %></td>
-        <td><%= snippet.private %></td>
-        <td><%= link_to 'Show', snippet %></td>
-        <td><%= link_to 'Edit', edit_snippet_path(snippet) %></td>
-        <td><%= link_to 'Destroy', snippet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="panel panel-default">
+  <!-- List group -->
+  <ul class="list-group">
+    <% for snippet in @snippets %>
+      <li class="list-group-item"><%= snippet.content.split[0...15].join(' ') %></li>
     <% end %>
-  </tbody>
-</table>
+  </ul>
+</div>
 
-<br>
 
-<%= link_to 'New Snippet', new_snippet_path %>
