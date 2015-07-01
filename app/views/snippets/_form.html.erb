@@ -1,25 +1,25 @@
-<%= form_for(@snippet) do |f| %>
-  <% if @snippet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@snippet.errors.count, "error") %> prohibited this snippet from being saved:</h2>
+<div>
+  <%= form_for(@snippet, class: 'form-inline') do |f| %>
+      <% if @snippet.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@snippet.errors.count, "error") %> prohibited this snippet from being saved:</h2>
 
-      <ul>
-      <% @snippet.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+            <ul>
+              <% @snippet.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :private %><br>
-    <%= f.check_box :private %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+      <div class="form-group">
+        <%= f.text_area :content, placeholder: 'Your snippet comes here..', class: 'form-control', rows: 7 %>
+      </div>
+
+      <div class="form-group">
+        Private?<br>
+        <%= f.check_box :private %>
+        <%= submit_tag 'Save', class: 'btn btn-default pull-right' %>
+      </div>
+  <% end %>
+</div>

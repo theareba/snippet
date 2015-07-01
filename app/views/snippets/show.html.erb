@@ -1,14 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @snippet.content %>
-</p>
-
-<p>
-  <strong>Private:</strong>
-  <%= @snippet.private %>
-</p>
-
-<%= link_to 'Edit', edit_snippet_path(@snippet) %> |
-<%= link_to 'Back', snippets_path %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= @snippet.content.split[0...15].join(' ') %></h3>
+  </div>
+  <div class="panel-body">
+    <%= @snippet.content %>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Share this</h3>
+  </div>
+  <div class="panel-body">
+    <%= text_field_tag :url, snippet_url(@snippet), class: 'form-control' %>
+  </div>
+</div>
