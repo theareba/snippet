@@ -23,11 +23,7 @@
       <!-- List group -->
       <ul class="list-group">
         <% for snippet in @snippets %>
-          <% if snippet.token? %>
-            <li class="list-group-item"><%= snippet.content.split[0...15].join(' ') %></li>
-          <% else %>
-            <%= link_to snippet.content.split[0...15].join(' '), snippet, class: 'list-group-item' %>
-          <% end %>
+          <%= active_snippet?(snippet) %>
         <% end %>
       </ul>
     </div>
