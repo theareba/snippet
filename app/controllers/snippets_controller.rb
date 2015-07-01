@@ -30,8 +30,11 @@ class SnippetsController < ApplicationController
 
     respond_to do |format|
       if @snippet.save
-        format.html { redirect_to @snippet, notice: 'Snippet was successfully created.' }
-        format.json { render :show, status: :created, location: @snippet }
+        if @snippet.token
+          format.html { redirect_to snippet_path(@snippet.token), notice: 'Snippet was successfully created.' }
+        else
+          format.html { redirect_to @snippet, notice: 'Snippet was successfully created.' }
+        end
       else
         format.html { render :new }
         format.json { render json: @snippet.errors, status: :unprocessable_entity }
