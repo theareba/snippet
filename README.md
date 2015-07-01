@@ -19,5 +19,5 @@ The App provides for an app accessible via the link /api/v1 e.g /api/v1/snippets
 ###Demo
 Tne app is live here https://snippetit.herokuapp.com/
 
-Feel free to clone the app and create pull requests. 
+Feel free to clone the app and create pull requests.
 
