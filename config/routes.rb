@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Soulmate::Server, :at => "/autoload"
   namespace :api do
     namespace :v1 do
       resources :snippets

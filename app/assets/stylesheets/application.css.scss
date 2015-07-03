@@ -1,6 +1,7 @@
 //ootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "soulmate";
 
 .panel :nth-child(odd){
   background-color: #dcdcdc;
