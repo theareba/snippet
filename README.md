@@ -30,6 +30,12 @@ http://localhost:3000/api/v1/snippets.json?&limit=4
 
 parse N to limit value
 
+###Search
+Relies on two gems, Soulmate for auto suggestion and Redis that soulmate uses as backend for faster search
+To get it working, you'll need to install redis on your computer:
+For mac: brew install redis
+For debian: sudo apt-get install redis
+
 ###Demo
 The app is live here https://snippetit.herokuapp.com/
 
