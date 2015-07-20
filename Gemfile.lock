@@ -85,9 +85,13 @@ GEM
       mini_portile (~> 0.6.0)
     pg (0.18.2)
     rack (1.6.4)
+    rack-cache (1.2)
+      rack (>= 0.4)
     rack-contrib (1.3.0)
       git-version-bump (~> 0.15)
       rack (~> 1.4)
+    rack-mini-profiler (0.9.6)
+      rack (>= 1.1.3)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
@@ -124,6 +128,27 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
     redis (3.2.1)
+    redis-actionpack (4.0.0)
+      actionpack (~> 4)
+      redis-rack (~> 1.5.0)
+      redis-store (~> 1.1.0)
+    redis-activesupport (4.1.0)
+      activesupport (~> 4)
+      redis-store (~> 1.1.0)
+    redis-namespace (1.5.2)
+      redis (~> 3.0, >= 3.0.4)
+    redis-rack (1.5.0)
+      rack (~> 1.5)
+      redis-store (~> 1.1.0)
+    redis-rack-cache (1.2.2)
+      rack-cache (~> 1.2)
+      redis-store (~> 1.1.0)
+    redis-rails (4.0.0)
+      redis-actionpack (~> 4)
+      redis-activesupport (~> 4)
+      redis-store (~> 1.1.0)
+    redis-store (1.1.6)
+      redis (>= 2.2)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     sass (3.4.15)
@@ -184,8 +209,13 @@ DEPENDENCIES
   jquery-rails
   pg
   rack-contrib
+  rack-mini-profiler
   rails (= 4.2.1)
   rails_12factor
+  redis
+  redis-namespace
+  redis-rack-cache
+  redis-rails
   responders (~> 2.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

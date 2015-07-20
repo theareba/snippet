@@ -1,11 +1,12 @@
 class SnippetsController < ApplicationController
+  include SnippetsHelper
   before_action :set_snippet, only: [:show, :edit, :update, :destroy]
   before_filter :redirection, only: [:show]
 
   # GET /snippets
   # GET /snippets.json
   def index
-    @snippets = Snippet.paginate(:page => params[:page], :per_page => 20).order("id desc")
+    fetch_snippets
     @count = Snippet.all.count
   end
 
